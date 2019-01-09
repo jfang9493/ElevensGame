@@ -56,7 +56,8 @@ public class ElevensBoard extends Board {
     @Override
     public boolean isLegal(List<Integer> selectedCards) {
         /* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
-
+        List<Card> cards = new ArrayList<>();
+        
     }
 
     /**
@@ -96,6 +97,9 @@ public class ElevensBoard extends Board {
      */
     private boolean containsJQK(List<Integer> selectedCards) {
         /* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
-        return true;
+        if(selectedCards.size() == 3)
+        {
+
+        }
     }
 }
