@@ -56,8 +56,21 @@ public class ElevensBoard extends Board {
     @Override
     public boolean isLegal(List<Integer> selectedCards) {
         /* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
-        List<Card> cards = new ArrayList<>();
-        
+        if(selectedCards.size() > 3 || selectedCards.size() < 2)
+        {
+            return false;
+        }
+        else
+        {
+            if(containsJQK(selectedCards) || (selectedCards.size() == 2 && (cardAt(selectedCards.get(0)).pointValue()) + (cardAt(selectedCards.get(1)).pointValue()) == 11))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 
     /**
@@ -97,9 +110,31 @@ public class ElevensBoard extends Board {
      */
     private boolean containsJQK(List<Integer> selectedCards) {
         /* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
+        boolean containsJack = false;
+        boolean containsQueen = false;
+        boolean containsKing = false;
         if(selectedCards.size() == 3)
         {
-
+            for(int i = 0; i < selectedCards.size(); i++)
+            {
+                if(cardAt(selectedCards.get(i)).rank().equals("jack"))
+                {
+                    containsJack = true;
+                }
+                else if(cardAt(selectedCards.get(i)).rank().equals("queen"))
+                {
+                    containsQueen = true;
+                }
+                else if(cardAt(selectedCards.get(i)).rank().equals("king"))
+                {
+                    containsKing = true;
+                }
+            }
+            if(containsJack && containsQueen && containsKing)
+            {
+                return true;
+            }
         }
+        return false;
     }
 }
