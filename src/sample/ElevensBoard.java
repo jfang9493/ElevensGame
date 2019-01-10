@@ -80,12 +80,36 @@ public class ElevensBoard extends Board {
     @Override
     public boolean anotherPlayIsPossible() {
         /* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
+        /**boolean containsJack = false;
+        boolean containsQueen = false;
+        boolean containsKing = false;
+        for(int i = 0; i < cardIndexes().size(); i++)
+        {
+            if(cardAt(cardIndexes())
+            for(int j = i+1; j < cardIndexes().size(); j++)
+            {
+                if(cardAt(cardIndexes().get(i)).pointValue() + cardAt(cardIndexes().get(j)).pointValue() == 11)
+                {
+                    return true;
+                }
+                else if(cardAt(cardIndexes().get(j)).pointValue() == 0)
+                {
+                    if()
+                }
+            }
+        }
+        return false;
+        */
         List<Integer> indexes = new ArrayList<>();
         for(int i = 0; i < cardIndexes().size(); i++)
         {
             for(int j = i+1; j < cardIndexes().size(); j++)
             {
                 indexes.add(cardIndexes().get(i)); indexes.add(cardIndexes().get(j));
+                if(cardAt(cardIndexes().get(i)).rank().equals("jack") || cardAt(cardIndexes().get(i)).rank().equals("queen") || cardAt(cardIndexes().get(i)).rank().equals("king"))
+                {
+                    indexes.add(cardIndexes().get(j+1));
+                }
                 if(isLegal(indexes))
                 {
                     return true;
@@ -94,8 +118,6 @@ public class ElevensBoard extends Board {
             }
         }
         return false;
-
-
     }
 
     /**
