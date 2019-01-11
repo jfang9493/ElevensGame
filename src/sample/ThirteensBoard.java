@@ -4,14 +4,14 @@ import java.util.List;
 import java.util.ArrayList;
 
 /**
- * The ElevensBoard class represents the board in a game of Elevens.
+ * The ThirteensBoard class represents the board in a game of Elevens.
  */
 public class ThirteensBoard extends Board {
 
     /**
      * The size (number of cards) on the board.
      */
-    private static final int BOARD_SIZE = 9;
+    private static final int BOARD_SIZE = 10;
 
     /**
      * The ranks of the cards for this game to be sent to the deck.
@@ -29,7 +29,7 @@ public class ThirteensBoard extends Board {
      * The values of the cards for this game to be sent to the deck.
      */
     private static final int[] POINT_VALUES =
-            {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 0, 0, 0};
+            {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 0};
 
     /**
      * Flag used to control debugging print statements.
@@ -38,7 +38,7 @@ public class ThirteensBoard extends Board {
 
 
     /**
-     * Creates a new <code>ElevensBoard</code> instance.
+     * Creates a new <code>ThirteensBoard</code> instance.
      */
     public ThirteensBoard() {
         super(BOARD_SIZE, RANKS, SUITS, POINT_VALUES);
@@ -96,6 +96,12 @@ public class ThirteensBoard extends Board {
                         }
                         indexes.clear();
                     }
+                    indexes.add(cardIndexes().get(i)); indexes.add(cardIndexes().get(j));
+                    if(isLegal(indexes))
+                    {
+                        return true;
+                    }
+                    indexes.clear();
                 }
             }
             else
