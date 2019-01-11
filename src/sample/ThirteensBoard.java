@@ -81,18 +81,23 @@ public class ThirteensBoard extends Board {
     public boolean anotherPlayIsPossible() {
         /* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
         List<Integer> indexes = new ArrayList<>();
-        for (int i = 0; i < cardIndexes().size(); i++)
+        for(int i = 0; i < cardIndexes().size(); i++)
         {
-            indexes.add(cardIndexes().get(i));
-            if (isKing(indexes)) return true;
-            for (int j = i + 1; j < cardIndexes().size(); j++)
+            if(cardAt(cardIndexes().get(i)).rank().equals("king"))
             {
-                indexes.add(cardIndexes().get(j));
-                if (isLegal(indexes))
+                return true;
+            }
+            else
+            {
+                for(int j = i+1; j < cardIndexes().size(); j++)
                 {
-                    return true;
+                    indexes.add(cardIndexes().get(i)); indexes.add(cardIndexes().get(j));
+                    if(isLegal(indexes))
+                    {
+                        return true;
+                    }
+                    indexes.clear();
                 }
-                indexes.clear();
             }
         }
         return false;
